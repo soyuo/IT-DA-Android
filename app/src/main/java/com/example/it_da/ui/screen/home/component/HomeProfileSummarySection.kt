@@ -53,7 +53,7 @@ fun HomeProfileSummarySection(
 
             Column {
                 Text(
-                    text = "안녕하세요, ${userName}님 👋",
+                    text = "안녕하세요, $userName",
                     color = ItdaPrimaryTextColor,
                     fontFamily = DotSans,
                     fontWeight = FontWeight.Bold,

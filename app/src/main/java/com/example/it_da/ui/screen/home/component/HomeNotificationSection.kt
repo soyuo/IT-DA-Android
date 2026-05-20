@@ -22,7 +22,7 @@ fun HomeNotificationSection(
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         ItdaSectionHeader(
-            title = "알림 요약ㆍ확인",
+            title = "알림 모아 · 확인",
             titleFontWeight = FontWeight.Medium
         )
 

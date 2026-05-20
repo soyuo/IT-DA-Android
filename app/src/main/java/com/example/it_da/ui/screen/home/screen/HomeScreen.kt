@@ -148,6 +148,8 @@ private fun HomeContent(
             text = "프로젝트 탐색하기",
             containerColor = ItdaHomeExploreButtonGray
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 
@@ -176,9 +178,9 @@ private fun HomeScreenPreview() {
 // Supplies preview-only values so the screen can be checked without the ViewModel.
 private fun previewHomeUiState(): HomeUiState {
     return HomeUiState(
-        userName = "000",
+        userName = "000님",
         profileImageResId = R.drawable.home_profile_placeholder,
-        greetingDescription = "상상은 여기서 현실이 됩니다.\n당신의 프로젝트와 팀을 찾아보세요",
+        greetingDescription = "당신의 포트폴리오 첫 줄이 바뀝니다.\n당신과 딱 맞는 파트너를 찾아줘요",
         projectCount = HomeProjectCount(
             applyingCount = 3,
             participatingCount = 1,
@@ -187,28 +189,36 @@ private fun previewHomeUiState(): HomeUiState {
         recommendedProjects = listOf(
             HomeRecommendedProject(
                 id = "recommended-ai-planner",
-                title = "AI 기반 학습 플래너 [0부0부]",
+                title = "AI 기반 학습 플래너 [0수어부]",
                 recruitingSummary = "백엔드 개발자 1명 모집",
-                statusText = "모집 중",
+                statusText = "모집중",
                 techStacks = listOf("Back-end"),
-                participantSummary = "IoT과ㆍ2명, SW과 1명 참여"
+                participantSummary = "IoT과 2명, SW전공 1명 참여"
+            ),
+            HomeRecommendedProject(
+                id = "recommended-hachiware",
+                title = "하치와레 키우기 [하키]",
+                recruitingSummary = "프론트엔드 개발자 2명 모집",
+                statusText = "모집중",
+                techStacks = listOf("Back-end"),
+                participantSummary = "IoT과 2명, SW전공 1명 참여"
             ),
             HomeRecommendedProject(
                 id = "recommended-pokemon",
-                title = "닮은 포켓몬 검사 [포켓몬백]",
-                recruitingSummary = "iOS 개발자ㆍ1명ㆍ디자이너 1명 모집",
-                statusText = "마감 임박",
+                title = "많은 포켓몬 검사 [포켓몬빵]",
+                recruitingSummary = "iOS 개발자 1명, 디자이너 1명 모집",
+                statusText = "마감임박",
                 techStacks = listOf("iOS", "Design"),
-                participantSummary = "IoT과ㆍ2명, SW과 1명 참여"
+                participantSummary = "IoT과 2명, SW전공 3명 참여"
             )
         ),
         participatingProjects = listOf(
             HomeParticipatingProject(
                 id = "participating-dalbal",
-                title = "사랑을 이어주는 앱 [달발]",
+                title = "사람을 이어주는 앱 [달밤]",
                 myRole = "내 역할 : iOS 개발",
-                statusText = "진행 중",
-                teamSummary = "팀원 4명ㆍ마감 2026-05-31"
+                statusText = "진행중",
+                teamSummary = "팀원 4명 · 마감 2026-05-31"
             )
         ),
         notifications = listOf(
@@ -216,7 +226,14 @@ private fun previewHomeUiState(): HomeUiState {
                 id = "notification-message",
                 imageResId = R.drawable.home_notification_mailbox,
                 imageDescription = "새 메시지 알림",
-                message = "지원한 프로젝트에서 새 메시지가 있습니다",
+                message = "지방화 프로젝트에서 메시지가 도착했습니다",
+                elapsedTime = "2분전"
+            ),
+            HomeNotificationUiModel(
+                id = "notification-join",
+                imageResId = R.drawable.home_notification_laptop,
+                imageDescription = "프로젝트 참여 알림",
+                message = "백엔드 개발자 1명이 프로젝트에 합류했습니다",
                 elapsedTime = "2분전"
             )
         )
