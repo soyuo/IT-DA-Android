@@ -23,7 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.it_da.ui.screen.home.state.RecommendedProjectUiModel
+import com.example.it_da.domain.model.HomeRecommendedProject
+import com.example.it_da.ui.screen.home.state.detailText
 import com.example.it_da.ui.theme.DotSans
 import com.example.it_da.ui.theme.ItdaPrimaryTextColor
 import com.example.it_da.ui.theme.ItdaSecondaryTextColor
@@ -31,7 +32,7 @@ import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 // Displays one recommended project with state-provided title, status, stack, and participant text.
 @Composable
 fun RecommendedProjectCard(
-    project: RecommendedProjectUiModel,
+    project: HomeRecommendedProject,
     onProjectClick: (String) -> Unit,
     onDetailClick: (String) -> Unit,
     modifier: Modifier = Modifier

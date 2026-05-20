@@ -19,20 +19,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.it_da.R
+import com.example.it_da.domain.model.HomeParticipatingProject
+import com.example.it_da.domain.model.HomeProjectCount
+import com.example.it_da.domain.model.HomeRecommendedProject
 import com.example.it_da.ui.screen.home.component.HomeBottomNavigationBar
 import com.example.it_da.ui.screen.home.component.HomeNotificationSection
 import com.example.it_da.ui.screen.home.component.HomeProfileSummarySection
 import com.example.it_da.ui.screen.home.component.ParticipatingProjectSection
 import com.example.it_da.ui.screen.home.component.RecommendedProjectSection
+import com.example.it_da.ui.screen.home.state.HomeNotificationUiModel
+import com.example.it_da.ui.screen.home.state.HomeUiState
 import com.example.it_da.ui.screen.signup.component.SignUpPrimaryButton
 import com.example.it_da.ui.screen.signup.component.SignUpTopBar
-import com.example.it_da.ui.screen.home.state.HomeNotificationUiModel
-import com.example.it_da.ui.screen.home.state.HomeProjectCountUiModel
-import com.example.it_da.ui.screen.home.state.HomeUiState
-import com.example.it_da.ui.screen.home.state.ParticipatingProjectUiModel
-import com.example.it_da.ui.screen.home.state.RecommendedProjectUiModel
-import com.example.it_da.ui.theme.ItdaHomeExploreButtonGray
 import com.example.it_da.ui.theme.ITDATheme
+import com.example.it_da.ui.theme.ItdaHomeExploreButtonGray
 
 // Assembles the home screen from state-driven sections and button callbacks.
 @Composable
@@ -179,13 +179,13 @@ private fun previewHomeUiState(): HomeUiState {
         userName = "000",
         profileImageResId = R.drawable.home_profile_placeholder,
         greetingDescription = "상상은 여기서 현실이 됩니다.\n당신의 프로젝트와 팀을 찾아보세요",
-        projectCount = HomeProjectCountUiModel(
+        projectCount = HomeProjectCount(
             applyingCount = 3,
             participatingCount = 1,
             completedCount = 1
         ),
         recommendedProjects = listOf(
-            RecommendedProjectUiModel(
+            HomeRecommendedProject(
                 id = "recommended-ai-planner",
                 title = "AI 기반 학습 플래너 [0부0부]",
                 recruitingSummary = "백엔드 개발자 1명 모집",
@@ -193,7 +193,7 @@ private fun previewHomeUiState(): HomeUiState {
                 techStacks = listOf("Back-end"),
                 participantSummary = "IoT과ㆍ2명, SW과 1명 참여"
             ),
-            RecommendedProjectUiModel(
+            HomeRecommendedProject(
                 id = "recommended-pokemon",
                 title = "닮은 포켓몬 검사 [포켓몬백]",
                 recruitingSummary = "iOS 개발자ㆍ1명ㆍ디자이너 1명 모집",
@@ -203,7 +203,7 @@ private fun previewHomeUiState(): HomeUiState {
             )
         ),
         participatingProjects = listOf(
-            ParticipatingProjectUiModel(
+            HomeParticipatingProject(
                 id = "participating-dalbal",
                 title = "사랑을 이어주는 앱 [달발]",
                 myRole = "내 역할 : iOS 개발",

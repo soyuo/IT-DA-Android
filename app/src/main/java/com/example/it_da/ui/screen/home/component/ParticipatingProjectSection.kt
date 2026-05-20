@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.it_da.domain.model.HomeParticipatingProject
 import com.example.it_da.ui.component.ItdaSectionHeader
-import com.example.it_da.ui.screen.home.state.ParticipatingProjectUiModel
 
 // Shows the user's participating projects with a card type separate from recommendations.
 @Composable
 fun ParticipatingProjectSection(
-    projects: List<ParticipatingProjectUiModel>,
+    projects: List<HomeParticipatingProject>,
     onProjectClick: (String) -> Unit,
     onDetailClick: (String) -> Unit,
     modifier: Modifier = Modifier

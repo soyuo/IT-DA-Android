@@ -19,7 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.it_da.ui.screen.home.state.ParticipatingProjectUiModel
+import com.example.it_da.domain.model.HomeParticipatingProject
+import com.example.it_da.ui.screen.home.state.detailText
 import com.example.it_da.ui.theme.DotSans
 import com.example.it_da.ui.theme.ItdaPrimaryTextColor
 import com.example.it_da.ui.theme.ItdaSecondaryTextColor
@@ -27,7 +28,7 @@ import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 // Displays one participating project with role and progress text supplied by state.
 @Composable
 fun ParticipatingProjectCard(
-    project: ParticipatingProjectUiModel,
+    project: HomeParticipatingProject,
     onProjectClick: (String) -> Unit,
     onDetailClick: (String) -> Unit,
     modifier: Modifier = Modifier

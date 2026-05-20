@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.it_da.ui.screen.home.state.HomeProjectCountUiModel
+import com.example.it_da.domain.model.HomeProjectCount
 import com.example.it_da.ui.theme.DotSans
 import com.example.it_da.ui.theme.ItdaHomeCardBorderGray
 import com.example.it_da.ui.theme.ItdaPrimaryTextColor
@@ -35,7 +35,7 @@ fun HomeProfileSummarySection(
     @DrawableRes profileImageResId: Int,
     userName: String,
     greetingDescription: String,
-    projectCount: HomeProjectCountUiModel,
+    projectCount: HomeProjectCount,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
@@ -83,7 +83,7 @@ fun HomeProfileSummarySection(
 // Displays the three count values that summarize the user's project activity.
 @Composable
 private fun HomeProjectCountCard(
-    projectCount: HomeProjectCountUiModel,
+    projectCount: HomeProjectCount,
     modifier: Modifier = Modifier
 ) {
     Surface(

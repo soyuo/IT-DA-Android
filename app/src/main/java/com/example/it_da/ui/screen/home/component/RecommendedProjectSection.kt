@@ -9,13 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.it_da.domain.model.HomeRecommendedProject
 import com.example.it_da.ui.component.ItdaSectionHeader
-import com.example.it_da.ui.screen.home.state.RecommendedProjectUiModel
 
 // Shows the recommended project section with independently clickable project cards.
 @Composable
 fun RecommendedProjectSection(
-    projects: List<RecommendedProjectUiModel>,
+    projects: List<HomeRecommendedProject>,
     onProjectClick: (String) -> Unit,
     onDetailClick: (String) -> Unit,
     modifier: Modifier = Modifier
