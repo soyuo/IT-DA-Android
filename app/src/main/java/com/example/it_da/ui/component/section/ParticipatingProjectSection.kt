@@ -1,4 +1,4 @@
-package com.example.it_da.ui.screen.home.component
+package com.example.it_da.ui.component.section
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,24 +7,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.it_da.ui.component.ItdaSectionHeader
-import com.example.it_da.ui.screen.home.state.RecommendedProjectUiModel
+import com.example.it_da.ui.component.card.ParticipatingProjectCard
+import com.example.it_da.ui.screen.home.state.ParticipatingProjectUiModel
 
-// Shows the recommended project section with independently clickable project cards.
+// Shows the user's participating projects with a card type separate from recommendations.
 @Composable
-fun RecommendedProjectSection(
-    projects: List<RecommendedProjectUiModel>,
+fun ParticipatingProjectSection(
+    projects: List<ParticipatingProjectUiModel>,
     onProjectClick: (String) -> Unit,
     onDetailClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
-        ItdaSectionHeader(
-            title = "추천 프로젝트",
-            titleFontWeight = FontWeight.Bold
-        )
+        ItdaSectionHeader(title = "참여 중인 프로젝트")
 
         Spacer(modifier = Modifier.height(13.dp))
 
@@ -33,7 +30,7 @@ fun RecommendedProjectSection(
             modifier = Modifier.fillMaxWidth()
         ) {
             projects.forEach { project ->
-                RecommendedProjectCard(
+                ParticipatingProjectCard(
                     project = project,
                     onProjectClick = onProjectClick,
                     onDetailClick = onDetailClick

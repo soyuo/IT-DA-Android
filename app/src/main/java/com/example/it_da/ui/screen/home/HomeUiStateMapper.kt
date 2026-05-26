@@ -1,4 +1,4 @@
-package com.example.it_da.ui.screen.home.mapper
+package com.example.it_da.ui.screen.home
 
 import com.example.it_da.R
 import com.example.it_da.domain.model.HomeDashboard

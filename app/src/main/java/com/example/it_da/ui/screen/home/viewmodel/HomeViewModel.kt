@@ -3,7 +3,7 @@ package com.example.it_da.ui.screen.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.it_da.data.repository.HomeRepository
-import com.example.it_da.ui.screen.home.mapper.toHomeUiState
+import com.example.it_da.ui.screen.home.toHomeUiState
 import com.example.it_da.ui.screen.home.state.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

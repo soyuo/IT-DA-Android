@@ -1,4 +1,4 @@
-package com.example.it_da.ui.screen.home.screen
+package com.example.it_da.ui.screen.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -20,10 +20,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.it_da.R
 import com.example.it_da.ui.screen.home.component.HomeBottomNavigationBar
-import com.example.it_da.ui.screen.home.component.HomeNotificationSection
-import com.example.it_da.ui.screen.home.component.HomeProfileSummarySection
-import com.example.it_da.ui.screen.home.component.ParticipatingProjectSection
-import com.example.it_da.ui.screen.home.component.RecommendedProjectSection
+import com.example.it_da.ui.component.section.HomeNotificationSection
+import com.example.it_da.ui.component.section.HomeProfileSummarySection
+import com.example.it_da.ui.component.section.ParticipatingProjectSection
+import com.example.it_da.ui.component.section.RecommendedProjectSection
 import com.example.it_da.ui.screen.signup.component.SignUpPrimaryButton
 import com.example.it_da.ui.screen.signup.component.SignUpTopBar
 import com.example.it_da.ui.screen.home.state.HomeNotificationUiModel

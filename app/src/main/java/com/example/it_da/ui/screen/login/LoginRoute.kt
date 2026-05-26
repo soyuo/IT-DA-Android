@@ -1,4 +1,4 @@
-package com.example.it_da.ui.screen.login.route
+package com.example.it_da.ui.screen.login
 
 import android.widget.Toast
 import androidx.compose.runtime.LaunchedEffect

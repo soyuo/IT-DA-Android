@@ -1,7 +1,6 @@
-package com.example.it_da.ui.screen.home.component
+package com.example.it_da.ui.component.section
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,9 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.it_da.ui.component.ItdaCardDefaults
 import com.example.it_da.ui.screen.home.state.HomeProjectCountUiModel
 import com.example.it_da.ui.theme.DotSans
-import com.example.it_da.ui.theme.ItdaHomeCardBorderGray
 import com.example.it_da.ui.theme.ItdaPrimaryTextColor
 import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 
@@ -93,10 +92,10 @@ private fun HomeProjectCountCard(
                 elevation = 8.dp,
                 shape = RoundedCornerShape(8.dp),
                 clip = false
-            ),
+        ),
         shape = RoundedCornerShape(8.dp),
         color = MaterialTheme.colorScheme.surface,
-        border = BorderStroke(1.dp, ItdaHomeCardBorderGray)
+        border = ItdaCardDefaults.outlinedBorder()
     ) {
         Row(
             modifier = Modifier

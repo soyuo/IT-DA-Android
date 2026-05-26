@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.it_da.ui.screen.home.route.HomeRoute
-import com.example.it_da.ui.screen.login.route.LoginRoute
+import com.example.it_da.ui.screen.home.HomeRoute
+import com.example.it_da.ui.screen.login.LoginRoute
 import com.example.it_da.ui.screen.signup.route.SignUpAccountRoute
 import com.example.it_da.ui.screen.signup.route.SignUpAdditionalInfoRoute
 

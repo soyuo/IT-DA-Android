@@ -1,6 +1,5 @@
-package com.example.it_da.ui.screen.home.component
+package com.example.it_da.ui.component.card
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,15 +18,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.it_da.ui.component.ItdaCardDefaults
 import com.example.it_da.ui.screen.home.state.HomeNotificationUiModel
 import com.example.it_da.ui.theme.DotSans
-import com.example.it_da.ui.theme.ItdaHomeCardBorderGray
 import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 
 // Displays one notification summary row with state-provided image, message, and elapsed time.
@@ -43,10 +41,10 @@ fun HomeNotificationCard(
             .heightIn(min = 54.dp)
             .clickable {
                 onClick(notification.id)
-            },
+        },
         shape = RoundedCornerShape(8.dp),
         color = MaterialTheme.colorScheme.surface,
-        border = BorderStroke(1.dp, ItdaHomeCardBorderGray)
+        border = ItdaCardDefaults.outlinedBorder()
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),

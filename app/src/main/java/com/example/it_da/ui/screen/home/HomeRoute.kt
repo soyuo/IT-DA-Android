@@ -1,10 +1,9 @@
-package com.example.it_da.ui.screen.home.route
+package com.example.it_da.ui.screen.home
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.it_da.ui.screen.home.screen.HomeScreen
 import com.example.it_da.ui.screen.home.viewmodel.HomeViewModel
 import com.example.it_da.ui.screen.home.viewmodel.HomeViewModelFactory
 

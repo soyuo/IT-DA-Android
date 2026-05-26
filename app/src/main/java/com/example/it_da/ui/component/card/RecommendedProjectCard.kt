@@ -1,4 +1,4 @@
-package com.example.it_da.ui.screen.home.component
+package com.example.it_da.ui.component.card
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -23,6 +23,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.it_da.ui.component.ItdaCardDefaults
+import com.example.it_da.ui.component.ItdaOutlinedBadge
+import com.example.it_da.ui.component.ItdaUnderlinedTextButton
+import com.example.it_da.ui.screen.home.component.HomeProjectContentEndPadding
+import com.example.it_da.ui.screen.home.component.HomeProjectContentStartPadding
+import com.example.it_da.ui.screen.home.component.HomeProjectTitleStartPadding
 import com.example.it_da.ui.screen.home.state.RecommendedProjectUiModel
 import com.example.it_da.ui.theme.DotSans
 import com.example.it_da.ui.theme.ItdaPrimaryTextColor
@@ -42,10 +48,10 @@ fun RecommendedProjectCard(
             .heightIn(min = 118.dp)
             .clickable {
                 onProjectClick(project.id)
-            },
+        },
         shape = RoundedCornerShape(8.dp),
         color = MaterialTheme.colorScheme.surface,
-        border = homeProjectCardBorder()
+        border = ItdaCardDefaults.outlinedBorder()
     ) {
         Column(
             modifier = Modifier.padding(
@@ -74,7 +80,7 @@ fun RecommendedProjectCard(
                     modifier = Modifier.weight(1f)
                 )
 
-                HomeProjectBadge(text = project.statusText)
+                ItdaOutlinedBadge(text = project.statusText)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -107,7 +113,7 @@ fun RecommendedProjectCard(
                     .horizontalScroll(rememberScrollState())
             ) {
                 project.techStacks.forEach { techStack ->
-                    HomeProjectBadge(text = techStack)
+                    ItdaOutlinedBadge(text = techStack)
                 }
             }
 
@@ -139,7 +145,7 @@ fun RecommendedProjectCard(
                     )
                 }
 
-                HomeProjectDetailLink(
+                ItdaUnderlinedTextButton(
                     text = project.detailText,
                     onClick = {
                         onDetailClick(project.id)
