@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,6 +38,10 @@ import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 import com.example.it_da.ui.theme.ItdaWhite
 import com.example.it_da.ui.theme.ITDATheme
 
+private val IntroHorizontalPadding = 24.dp
+private val IntroSectionSpacing = 10.dp
+private val IntroTopSpacing = 20.dp
+
 @Composable
 fun SelfIntroductionScreen(
     onBackClick: () -> Unit,
@@ -53,28 +56,13 @@ fun SelfIntroductionScreen(
     if (showEditDialog) {
         AlertDialog(
             onDismissRequest = { showEditDialog = false },
-            title = {
-                Text(
-                    text = "자기소개 수정",
-                    fontFamily = DotSans,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
-            },
+            title = { Text("자기소개 수정", fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 20.sp) },
             text = {
                 OutlinedTextField(
                     value = draftIntroduction,
                     onValueChange = { draftIntroduction = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(170.dp),
-                    placeholder = {
-                        Text(
-                            text = "자기소개를 입력해 주세요.",
-                            fontFamily = DotSans,
-                            color = ItdaSecondaryTextColor
-                        )
-                    },
+                    modifier = Modifier.fillMaxWidth().height(170.dp),
+                    placeholder = { Text("자기소개를 입력해 주세요.", fontFamily = DotSans, color = ItdaSecondaryTextColor) },
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = ItdaGuideGray,
@@ -100,7 +88,6 @@ fun SelfIntroductionScreen(
                     text = "취소",
                     modifier = Modifier.clickable { showEditDialog = false },
                     fontFamily = DotSans,
-                    fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
                     color = ItdaSecondaryTextColor
                 )
@@ -114,25 +101,17 @@ fun SelfIntroductionScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = IntroHorizontalPadding),
+        verticalArrangement = Arrangement.spacedBy(IntroSectionSpacing)
     ) {
         SelfIntroductionTopBar(onBackClick = onBackClick)
-
-        Spacer(modifier = Modifier.height(20.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "자기소개",
-                fontFamily = DotSans,
-                fontWeight = FontWeight.Bold,
-                fontSize = 21.sp,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-
+            Text("자기소개", fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 21.sp)
             Surface(
                 modifier = Modifier.clickable {
                     draftIntroduction = introduction
@@ -153,12 +132,8 @@ fun SelfIntroductionScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(10.dp))
-
         Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(220.dp),
+            modifier = Modifier.fillMaxWidth().height(220.dp),
             shape = RoundedCornerShape(12.dp),
             color = ItdaWhite,
             border = BorderStroke(1.dp, ItdaGuideGray)
@@ -167,10 +142,8 @@ fun SelfIntroductionScreen(
                 text = introduction,
                 modifier = Modifier.padding(14.dp),
                 fontFamily = DotSans,
-                fontWeight = FontWeight.Normal,
                 fontSize = 15.sp,
-                lineHeight = 22.sp,
-                color = MaterialTheme.colorScheme.onBackground
+                lineHeight = 22.sp
             )
         }
     }
@@ -179,34 +152,18 @@ fun SelfIntroductionScreen(
 @Composable
 private fun SelfIntroductionTopBar(onBackClick: () -> Unit) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(72.dp),
-        horizontalArrangement = Arrangement.Start,
+        modifier = Modifier.fillMaxWidth().height(72.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .size(36.dp)
-                .clickable(onClick = onBackClick),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "<",
-                fontFamily = DotSans,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                color = MaterialTheme.colorScheme.onBackground
-            )
+        Box(modifier = Modifier.size(36.dp).clickable(onClick = onBackClick), contentAlignment = Alignment.Center) {
+            Text("<", fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 20.sp)
         }
-
         Text(
             text = "자기소개 작성",
+            modifier = Modifier.padding(start = 8.dp),
             fontFamily = DotSans,
             fontWeight = FontWeight.Bold,
-            fontSize = 23.sp,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.padding(start = 8.dp)
+            fontSize = 23.sp
         )
     }
 }
@@ -214,8 +171,6 @@ private fun SelfIntroductionTopBar(onBackClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 private fun SelfIntroductionScreenPreview() {
-    ITDATheme {
-        SelfIntroductionScreen(onBackClick = {})
-    }
+    ITDATheme { SelfIntroductionScreen(onBackClick = {}) }
 }
 

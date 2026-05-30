@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,9 +32,13 @@ import androidx.compose.ui.unit.sp
 import com.example.it_da.ui.theme.DotSans
 import com.example.it_da.ui.theme.ItdaGuideGray
 import com.example.it_da.ui.theme.ItdaHomeExploreButtonGray
-import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 import com.example.it_da.ui.theme.ItdaWhite
 import com.example.it_da.ui.theme.ITDATheme
+
+private val PersonalInfoHorizontalPadding = 24.dp
+private val PersonalInfoSectionSpacing = 12.dp
+private val PersonalInfoTopSpacing = 20.dp
+private val PersonalInfoFieldSpacing = 6.dp
 
 @Composable
 fun PersonalInfoScreen(
@@ -52,37 +55,25 @@ fun PersonalInfoScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = PersonalInfoHorizontalPadding),
+        verticalArrangement = Arrangement.spacedBy(PersonalInfoSectionSpacing)
     ) {
         PersonalInfoTopBar(onBackClick = onBackClick)
-        Spacer(modifier = Modifier.height(20.dp))
 
-        PersonalField("이름", name) { name = it }
-        Spacer(modifier = Modifier.height(12.dp))
-        PersonalField("학과", department) { department = it }
-        Spacer(modifier = Modifier.height(12.dp))
-        PersonalField("학년", grade) { grade = it }
-        Spacer(modifier = Modifier.height(12.dp))
-        PersonalField("가입일", joinDate) { joinDate = it }
-
-        Spacer(modifier = Modifier.height(18.dp))
+        Column(verticalArrangement = Arrangement.spacedBy(PersonalInfoSectionSpacing)) {
+            PersonalField("이름", name) { name = it }
+            PersonalField("학과", department) { department = it }
+            PersonalField("학년", grade) { grade = it }
+            PersonalField("가입일", joinDate) { joinDate = it }
+        }
 
         Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .clickable(onClick = onBackClick),
+            modifier = Modifier.fillMaxWidth().height(48.dp).clickable(onClick = onBackClick),
             shape = RoundedCornerShape(12.dp),
             color = ItdaHomeExploreButtonGray
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Text(
-                    text = "저장",
-                    fontFamily = DotSans,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    color = ItdaWhite
-                )
+                Text("저장", fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = ItdaWhite)
             }
         }
     }
@@ -94,15 +85,8 @@ private fun PersonalField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
-    Column {
-        Text(
-            text = label,
-            fontFamily = DotSans,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-        Spacer(modifier = Modifier.height(6.dp))
+    Column(verticalArrangement = Arrangement.spacedBy(PersonalInfoFieldSpacing)) {
+        Text(label, fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 14.sp)
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
@@ -120,38 +104,23 @@ private fun PersonalField(
 }
 
 @Composable
-private fun PersonalInfoTopBar(
-    onBackClick: () -> Unit
-) {
+private fun PersonalInfoTopBar(onBackClick: () -> Unit) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(72.dp),
-        horizontalArrangement = Arrangement.Start,
+        modifier = Modifier.fillMaxWidth().height(72.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(
-            modifier = Modifier
-                .size(36.dp)
-                .clickable(onClick = onBackClick),
+            modifier = Modifier.size(36.dp).clickable(onClick = onBackClick),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "<",
-                fontFamily = DotSans,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                color = MaterialTheme.colorScheme.onBackground
-            )
+            Text("<", fontFamily = DotSans, fontWeight = FontWeight.Bold, fontSize = 20.sp)
         }
-
         Text(
             text = "개인 정보 입력",
+            modifier = Modifier.padding(start = 8.dp),
             fontFamily = DotSans,
             fontWeight = FontWeight.Bold,
-            fontSize = 23.sp,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.padding(start = 8.dp)
+            fontSize = 23.sp
         )
     }
 }
@@ -159,8 +128,6 @@ private fun PersonalInfoTopBar(
 @Preview(showBackground = true)
 @Composable
 private fun PersonalInfoScreenPreview() {
-    ITDATheme {
-        PersonalInfoScreen(onBackClick = {})
-    }
+    ITDATheme { PersonalInfoScreen(onBackClick = {}) }
 }
 

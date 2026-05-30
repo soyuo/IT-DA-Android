@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -38,6 +37,21 @@ import com.example.it_da.ui.theme.ItdaSecondaryTextColor
 import com.example.it_da.ui.theme.ItdaWhite
 import com.example.it_da.ui.theme.ITDATheme
 
+private val ProfileOuterHorizontalPadding = 24.dp
+private val ProfileOuterTopPadding = 22.dp
+private val ProfileOuterBottomPadding = 84.dp
+private val ProfileSectionLargeSpacing = 24.dp
+private val ProfileSectionMediumSpacing = 20.dp
+private val ProfileTitleToContentSpacing = 10.dp
+private val ProfileHeaderToButtonSpacing = 14.dp
+private val ProfileButtonToFirstSectionSpacing = 22.dp
+private val ProfileSummaryTopSpacing = 12.dp
+private val ProfileActionRowTopSpacing = 12.dp
+private val ProfileChipSpacing = 6.dp
+private val ProfileCardRowSpacing = 12.dp
+private val ProfileHeaderAvatarTextSpacing = 20.dp
+private val ProfileHeaderTextSpacing = 2.dp
+
 @Composable
 fun MyProfileScreen(
     onHomeTabClick: () -> Unit,
@@ -63,65 +77,69 @@ fun MyProfileScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
-                    .padding(top = 22.dp, bottom = 84.dp)
+                    .padding(horizontal = ProfileOuterHorizontalPadding)
+                    .padding(top = ProfileOuterTopPadding, bottom = ProfileOuterBottomPadding),
+                verticalArrangement = Arrangement.spacedBy(ProfileSectionMediumSpacing)
             ) {
                 MyProfileHeader()
-                Spacer(modifier = Modifier.height(14.dp))
 
                 ActionButton(
                     text = "개인 정보 입력",
                     onClick = onPersonalInfoClick
                 )
 
-                Spacer(modifier = Modifier.height(22.dp))
-                SectionTitle(text = "기술 스택")
-                Spacer(modifier = Modifier.height(14.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    ItdaOutlinedBadge(text = "Back-end")
-                    ItdaOutlinedBadge(text = "Java")
-                    ItdaOutlinedBadge(text = "JavaScript")
-                    ItdaOutlinedBadge(text = "Design")
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-                SectionTitle(text = "경력")
-                Spacer(modifier = Modifier.height(10.dp))
-                EmptyBox(height = 86.dp)
-
-                Spacer(modifier = Modifier.height(20.dp))
-                SectionTitle(text = "자기 소개")
-                Spacer(modifier = Modifier.height(10.dp))
-                EmptyBox(
-                    height = 90.dp,
-                    text = "자기소개 작성하기",
-                    onClick = onSelfIntroductionClick
-                )
-
-                Spacer(modifier = Modifier.height(20.dp))
-                SectionTitle(text = "활동 요약")
-                Spacer(modifier = Modifier.height(12.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                SectionBlock(
+                    title = "기술 스택",
+                    titleToContentSpacing = ProfileHeaderToButtonSpacing
                 ) {
-                    SummaryCard(value = "2", label = "참여 프로젝트", modifier = Modifier.weight(1f))
-                    SummaryCard(value = "3", label = "지원 내역", modifier = Modifier.weight(1f))
-                    SummaryCard(value = "1", label = "받은 제안", modifier = Modifier.weight(1f))
+                    Row(horizontalArrangement = Arrangement.spacedBy(ProfileChipSpacing)) {
+                        ItdaOutlinedBadge(text = "Back-end")
+                        ItdaOutlinedBadge(text = "Java")
+                        ItdaOutlinedBadge(text = "JavaScript")
+                        ItdaOutlinedBadge(text = "Design")
+                    }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    ActionButton(
-                        text = "프로젝트 전체 보기",
-                        modifier = Modifier.weight(1.35f),
-                        onClick = onProjectStatusClick
+                SectionBlock(title = "경력") {
+                    EmptyBox(height = 86.dp)
+                }
+
+                SectionBlock(title = "자기 소개") {
+                    EmptyBox(
+                        height = 90.dp,
+                        text = "자기소개 작성하기",
+                        onClick = onSelfIntroductionClick
                     )
-                    ActionButton(
-                        text = "설정",
-                        modifier = Modifier.weight(1f),
-                        onClick = onNotificationSettingsClick
-                    )
+                }
+
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(ProfileSummaryTopSpacing)
+                ) {
+                    SectionTitle(text = "활동 요약")
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(ProfileCardRowSpacing)
+                    ) {
+                        SummaryCard(value = "2", label = "참여 프로젝트", modifier = Modifier.weight(1f))
+                        SummaryCard(value = "3", label = "지원 내역", modifier = Modifier.weight(1f))
+                        SummaryCard(value = "1", label = "받은 제안", modifier = Modifier.weight(1f))
+                    }
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(ProfileCardRowSpacing)
+                    ) {
+                        ActionButton(
+                            text = "프로젝트 전체 보기",
+                            modifier = Modifier.weight(1.35f),
+                            onClick = onProjectStatusClick
+                        )
+                        ActionButton(
+                            text = "설정",
+                            modifier = Modifier.weight(1f),
+                            onClick = onNotificationSettingsClick
+                        )
+                    }
                 }
             }
         }
@@ -140,10 +158,25 @@ fun MyProfileScreen(
 }
 
 @Composable
+private fun SectionBlock(
+    title: String,
+    titleToContentSpacing: Dp = ProfileTitleToContentSpacing,
+    content: @Composable () -> Unit
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(titleToContentSpacing)
+    ) {
+        SectionTitle(text = title)
+        content()
+    }
+}
+
+@Composable
 private fun MyProfileHeader() {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(ProfileHeaderAvatarTextSpacing)
     ) {
         Surface(
             modifier = Modifier.size(92.dp),
@@ -159,9 +192,7 @@ private fun MyProfileHeader() {
             }
         }
 
-        Spacer(modifier = Modifier.size(20.dp))
-
-        Column {
+        Column(verticalArrangement = Arrangement.spacedBy(ProfileHeaderTextSpacing)) {
             Text(
                 text = "메타몽",
                 fontFamily = DotSans,
@@ -258,7 +289,6 @@ private fun SummaryCard(
                 lineHeight = 20.sp,
                 color = MaterialTheme.colorScheme.onBackground
             )
-            Spacer(modifier = Modifier.height(3.dp))
             Text(
                 text = label,
                 fontFamily = DotSans,
